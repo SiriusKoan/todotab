@@ -1,0 +1,15 @@
+{
+  "name": "TodoTab",
+  "version": "0.1",
+  "manifest_version": 3,
+  "description": "Simple new tab extension showing your todo list",
+  
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage"
+  ],
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  }
+}
