@@ -1,0 +1,28 @@
+body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    height: 95vh;
+}
+
+.flex-item {
+    flex-grow: 1;
+    flex-basis: 0;
+    height: 100%;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.flex-item h1 {
+    text-align: center;
+}
+
+
