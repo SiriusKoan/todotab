@@ -2,11 +2,15 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-color: #181A18;
     margin: 0;
     height: 100vh;
+    overflow: hidden;
+    color: aliceblue;
 }
 
 .flex-container {
+    padding-top: 30px;
     display: flex;
     justify-content: space-between;
     height: 95vh;
@@ -16,13 +20,26 @@ body {
     flex-grow: 1;
     flex-basis: 0;
     height: 100%;
-    margin: 10px;
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    margin: 5px;
+    font-size: 20px;
 }
 
 .flex-item h1 {
     text-align: center;
+}
+
+#date-time-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+}
+
+#choose-image-btn {
+    margin: 10px;
 }
 
 

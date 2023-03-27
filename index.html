@@ -5,20 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>New Tab</title>
 </head>
     <body>
-    <button id="choose-image-btn">Choose Image</button>
+        <button id="choose-image-btn">Choose Image</button>
+        <div id="date-time-container">2023/01/01</div>
         <div class="flex-container">
             <div class="flex-item" id="todos">
                 <!-- Todos -->
-                <h1>Todo List</h1>
+                <div id="todo-container"></div>
+                <form id="todo-form" class="todo-item">
+                    <input type="text" id="todo-title" name="title" required>
+                    <input type="date" id="todo-deadline" name="deadline" required>
+                    <button type="submit">Add</button>
+                </form>
             </div>
             <div class="flex-item" id="links">
                 <!-- Frequently used links -->
-                <h1>Frequently Used Links</h1>
+                <div id="links-container"></div>
             </div>
         </div>
     </body>
     <script src="index.js"></script>
+    <script src="todo.js"></script>
 </html>

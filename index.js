@@ -49,7 +49,6 @@ window.addEventListener("load", function() {
 function loadBackgroundImage(params) {
     chrome.storage.local.get("background-image", function(data) {
         const storedImage = data["background-image"];
-        console.log(storedImage)
         if (storedImage) {
             const blob = b64toBlob(storedImage.split(',')[1]);
             const blobUrl = URL.createObjectURL(blob);
@@ -57,3 +56,20 @@ function loadBackgroundImage(params) {
         }
     });
 }
+
+function getCurrentDateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+    const date = now.getDate();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    return `${year}-${month}-${date} ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+const dateTimeContainer = document.getElementById("date-time-container");
+dateTimeContainer.innerText = getCurrentDateTime();
+setInterval(function() {
+    dateTimeContainer.innerText = getCurrentDateTime();
+}, 1000);
