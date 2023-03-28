@@ -2,11 +2,14 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #181A18;
+    -webkit-transition: background-image 0.5s ease-in;
+    transition: background-image 0.5s ease-in;
+    background-image: url(img/bg.png);
     margin: 0;
     height: 100vh;
     overflow: hidden;
     color: aliceblue;
+    font-family: 'Roboto', sans-serif;
 }
 
 .flex-container {
@@ -41,5 +44,3 @@ body {
 #choose-image-btn {
     margin: 10px;
 }
-
-

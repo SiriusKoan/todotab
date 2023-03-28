@@ -1,6 +1,5 @@
 .todo-item {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px;
     margin: 3px;
@@ -12,11 +11,12 @@
     border-radius: 20px;
     padding: 5px 10px;
     border: none;
-    text-align:center;
+    text-align: center;
+    margin-left: auto;
 }
 
 .todo-title {
-    margin-left: 40px;
+    margin-left: 10px;
 }
 
 .todo-overdue {
@@ -35,11 +35,6 @@
     background-color: #59d93d;
 }
 
-.todo-delete-btn {
-    background-color: #de554b;
-    position: absolute;
-}
-
 #todo-form {
     justify-content: unset;
 }
@@ -49,14 +44,15 @@
 }
 
 #todos {
-    animation: slide-in 0.5s ease-out;
+    animation: from-left-slide-in 0.5s ease-out;
 }
 
-@keyframes slide-in {
+@keyframes from-left-slide-in {
     from {
         transform: translateX(-70%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;

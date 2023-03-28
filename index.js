@@ -73,3 +73,8 @@ dateTimeContainer.innerText = getCurrentDateTime();
 setInterval(function() {
     dateTimeContainer.innerText = getCurrentDateTime();
 }, 1000);
+
+window.onload = () => {
+    renderTodos();
+    renderLinks();
+};

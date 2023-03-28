@@ -11,6 +11,7 @@ input {
     border-radius: 2px;
     box-sizing: border-box;
     height: 25px;
+    margin: 5px;
 }
 
 button {
@@ -25,8 +26,16 @@ button {
     color: #fff;
     cursor: pointer;
     transition: filter 0.2s ease;
+    margin: 5px;
 }
 
 button:hover {
     filter: brightness(80%);
+}
+
+.delete-btn {
+    background-color: #de554b;
+    line-height: 20px;
+    cursor: pointer;
+    border: none;
 }

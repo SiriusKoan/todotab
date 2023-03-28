@@ -10,23 +10,23 @@ todoForm.addEventListener('submit', (e) => {
         todos.push({ "title": todoTitle.value, "deadline": todoDeadline.value });
         chrome.storage.local.set({ todos: todos }, function () {
             console.log(`Todo ${todoTitle.value} saved`);
+            // reset input
+            todoTitle.value = '';
+            todoDeadline.value = '';
         });
-        renderTodos(todoTitle.value, todoDeadline.value);
-        // reset input
-        todoTitle.value = '';
-        todoDeadline.value = '';
+        renderTodo(todoTitle.value, todoDeadline.value);
     });
 });
 
 
-window.onload = () => {
+function renderTodos() {
     chrome.storage.local.get(['todos'], function (result) {
         let todos = result.todos || [];
         todos.forEach(todo => {
-            renderTodos(todo.title, todo.deadline);
+            renderTodo(todo.title, todo.deadline);
         });
     });
-};
+}
 
 function deleteTodo(e) {
     const todoItem = e.target.parentElement;
@@ -43,12 +43,13 @@ function deleteTodo(e) {
     });
 }
 
-function renderTodos(title, deadline) {
+function renderTodo(title, deadline) {
     const todoContainer = document.querySelector('#todo-container');
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo-item');
     // delete btn
     const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-btn");
     deleteButton.classList.add("todo-delete-btn");
     const icon = document.createElement("i");
     icon.classList.add("fas");
