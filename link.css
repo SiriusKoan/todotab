@@ -1,0 +1,74 @@
+#link-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+#link-container a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+#link-container a:hover {
+    text-decoration: underline;
+}
+
+.link-item {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.link-item:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.link-url {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.link-delete-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+#link-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#links {
+    animation: from-right-slide-in 0.5s ease-out;
+}
+
+@keyframes from-right-slide-in {
+    from {
+        transform: translateX(70%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
