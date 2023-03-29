@@ -3,7 +3,6 @@
   "version": "0.1",
   "manifest_version": 3,
   "description": "Simple new tab extension showing your todo list",
-  
   "permissions": [
     "tabs",
     "storage",
