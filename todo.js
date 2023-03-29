@@ -29,16 +29,17 @@ function renderTodos() {
 }
 
 function deleteTodo(e) {
-    const todoItem = e.target.parentElement;
-    console.log(todoItem);
-    const todoId = todoItem.todo_id;
+    let todoItem = e.target.parentElement;
+    if (todoItem.classList.contains('todo-delete-btn')) {
+        todoItem = todoItem.parentElement;
+    }
+    const todoId = todoItem.querySelector('.todo-delete-btn').getAttribute("todo_id");
     chrome.storage.local.get(['todos'], function (result) {
         let todos = result.todos || [];
         todos.splice(todoId, 1);
         chrome.storage.local.set({ todos: todos }, function () {
             console.log(`Todo ${todoId} deleted`);
-            console.log(todoItem.parentElement);
-            todoItem.parentElement.remove();
+            todoItem.remove();
         });
     });
 }
@@ -55,7 +56,7 @@ function renderTodo(title, deadline) {
     icon.classList.add("fas");
     icon.classList.add("fa-trash");
     deleteButton.appendChild(icon);
-    deleteButton.todo_id = numberOfTodos;
+    deleteButton.setAttribute("todo_id", numberOfTodos);
     deleteButton.addEventListener("click", deleteTodo);
     todoDiv.appendChild(deleteButton);
     // title
