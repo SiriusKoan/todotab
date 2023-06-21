@@ -46,7 +46,7 @@ window.addEventListener("load", function() {
     loadBackgroundImage();
 });
 
-function loadBackgroundImage(params) {
+function loadBackgroundImage() {
     chrome.storage.local.get("background-image", function(data) {
         const storedImage = data["background-image"];
         if (storedImage) {
