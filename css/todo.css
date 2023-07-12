@@ -43,7 +43,7 @@
     margin: 0px 5px;
 }
 
-#todos {
+#todos.show {
     animation: from-left-slide-in 0.5s ease-out;
 }
 

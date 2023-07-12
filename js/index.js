@@ -1,4 +1,5 @@
 const chooseImageButton = document.getElementById("choose-image-btn");
+var space_triggered = false;
 
 chooseImageButton.addEventListener("click", function() {
     const input = document.createElement("input");
@@ -57,6 +58,10 @@ function loadBackgroundImage() {
     });
 }
 
+function padTo2(number) {
+    return number.toString().padStart(2, "0");
+}
+
 function getCurrentDateTime() {
     const now = new Date();
     const year = now.getFullYear();
@@ -65,7 +70,7 @@ function getCurrentDateTime() {
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
-    return `${year}-${month}-${date} ${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+    return `${year}-${padTo2(month)}-${padTo2(date)} ${padTo2(hours)}:${padTo2(minutes)}:${padTo2(seconds)}`;
 }
 
 const dateTimeContainer = document.getElementById("date-time-container");
@@ -74,7 +79,23 @@ setInterval(function() {
     dateTimeContainer.innerText = getCurrentDateTime();
 }, 1000);
 
+function StartDisplay() {
+    const ele = document.getElementById("date-time-container");
+    ele.classList.add("start");
+}
+
+document.addEventListener("keydown", function(event) {
+    if (!space_triggered && (event.key === " " || event.key === "ArrowUp")) {
+        const ele = document.getElementById("date-time-container");
+        ele.classList.remove("start");
+        document.getElementById("todos").classList.add("show");
+        renderTodos();
+        document.getElementById("links").classList.add("show");
+        renderLinks();
+        space_triggered = true;
+    }
+});
+
 window.onload = () => {
-    renderTodos();
-    renderLinks();
+    StartDisplay();
 };

@@ -1,11 +1,12 @@
 var numberOfTodos = 0;
+const todoContainer = document.querySelector('#todo-container');
 
 const todoForm = document.querySelector('#todo-form');
-todoForm.addEventListener('submit', (e) => {
+todoForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    const todoTitle = document.querySelector('#todo-title');
-    const todoDeadline = document.querySelector('#todo-deadline');
-    chrome.storage.local.get(['todos'], function (result) {
+    const todoTitle = document.querySelector("#todo-title");
+    const todoDeadline = document.querySelector("#todo-deadline");
+    chrome.storage.local.get(["todos"], function (result) {
         let todos = result.todos || [];
         todos.push({ "title": todoTitle.value, "deadline": todoDeadline.value });
         chrome.storage.local.set({ todos: todos }, function () {
@@ -20,6 +21,9 @@ todoForm.addEventListener('submit', (e) => {
 
 
 function renderTodos() {
+    // flush all todos
+    todoContainer.innerHTML = '';
+    // render all todos
     chrome.storage.local.get(['todos'], function (result) {
         let todos = result.todos || [];
         todos.forEach(todo => {
@@ -41,11 +45,11 @@ function deleteTodo(e) {
             console.log(`Todo ${todoId} deleted`);
             todoItem.remove();
         });
+        renderTodos();
     });
 }
 
 function renderTodo(title, deadline) {
-    const todoContainer = document.querySelector('#todo-container');
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo-item');
     // delete btn

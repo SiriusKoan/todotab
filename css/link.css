@@ -58,7 +58,7 @@
     backdrop-filter: blur(2px);
 }
 
-#links {
+#links.show {
     animation: from-right-slide-in 0.5s ease-out;
 }
 
