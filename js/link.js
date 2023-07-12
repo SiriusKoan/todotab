@@ -1,4 +1,5 @@
 var numberOfLinks = 0;
+const linkContainer = document.querySelector('#link-container');
 
 const linkForm = document.querySelector('#link-form');
 linkForm.addEventListener('submit', (e) => {
@@ -20,6 +21,7 @@ linkForm.addEventListener('submit', (e) => {
 });
 
 function renderLinks() {
+    // render all links
     chrome.storage.local.get(['links'], function (result) {
         let links = result.links || [];
         links.forEach(link => {
@@ -29,7 +31,8 @@ function renderLinks() {
 }
 
 function deleteLink(e) {
-    const linkItem = e.target.parentElement;
+    e.preventDefault();
+    const linkItem = e.target.parentElement.link_id ? e.target.parentElement : e.target; // click on icon or button
     console.log(linkItem);
     const linkId = linkItem.link_id;
     chrome.storage.local.get(['links'], function (result) {
@@ -45,7 +48,6 @@ function deleteLink(e) {
 
 function renderLink(title, url) {
     // render links refer to renderTodos in todo.js
-    const linkContainer = document.querySelector('#link-container');
     const linkDiv = document.createElement('a');
     linkDiv.classList.add('link-item');
     linkDiv.setAttribute('href', url);
@@ -65,17 +67,6 @@ function renderLink(title, url) {
     linkURL.innerText = title;
     linkURL.classList.add('link-url');
     linkDiv.appendChild(linkURL);
-    // // url image
-    // const linkImage = document.createElement('img');
-    // linkImage.setAttribute('src', `https://www.google.com/s2/favicons?domain=${url}&sz=32`);
-    // linkImage.classList.add('link-image');
-    // linkURL.appendChild(linkImage);
-    // // url image container
-    // const linkImageContainer = document.createElement('div');
-    // linkImageContainer.classList.add('link-image-container');
-    // linkImageContainer.appendChild(linkImage);
-    // linkURL.appendChild(linkImageContainer);
-    
     linkContainer.insertBefore(linkDiv, linkContainer.childNodes[0]);
     numberOfLinks++;
 }
