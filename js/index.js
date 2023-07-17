@@ -84,15 +84,25 @@ function StartDisplay() {
     ele.classList.add("start");
 }
 
+function showMainPage() {
+    const ele = document.getElementById("date-time-container");
+    ele.classList.remove("start");
+    document.getElementById("todos").classList.add("show");
+    renderTodos();
+    document.getElementById("links").classList.add("show");
+    renderLinks();
+    space_triggered = true;
+}
+
 document.addEventListener("keydown", function(event) {
     if (!space_triggered && (event.key === " " || event.key === "ArrowUp")) {
-        const ele = document.getElementById("date-time-container");
-        ele.classList.remove("start");
-        document.getElementById("todos").classList.add("show");
-        renderTodos();
-        document.getElementById("links").classList.add("show");
-        renderLinks();
-        space_triggered = true;
+        showMainPage();
+    }
+});
+
+document.addEventListener("click", function(event) {
+    if (!space_triggered) {
+        showMainPage();
     }
 });
 
