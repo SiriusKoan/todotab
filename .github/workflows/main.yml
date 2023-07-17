@@ -1,0 +1,26 @@
+on:
+  push:
+    branches:
+    - main
+    
+jobs:
+  release:
+    name: Release New Version
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Set tag name
+      run: echo "GIT_TAG=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+    - name: Zip the files
+      run: zip -r release.zip .
+    - uses: xresloader/upload-to-github-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.SECRET }}
+      with:
+        file: "release.zip"
+        tag_name: ${{ env.GIT_TAG }}
+        default_release_name: ${{ env.GIT_TAG }}
+        tags: false
+        draft: true
