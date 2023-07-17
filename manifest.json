@@ -1,6 +1,6 @@
 {
   "name": "TodoTab",
-  "version": "0.1",
+  "version": "1.0",
   "manifest_version": 3,
   "description": "Simple new tab extension showing your todo list",
   "permissions": [
